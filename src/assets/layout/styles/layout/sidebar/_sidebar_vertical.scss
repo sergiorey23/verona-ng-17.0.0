@@ -1,13 +1,12 @@
 .layout-sidebar {
     position: fixed;
-    width: 14rem;
+    width: 15rem;
     display: flex;
     flex-direction: column;
     height: calc(100% - 5rem);
     left: 0;
     top: 5rem;
     user-select: none;
-    background: var(--v-body-bg);
     z-index: 999;
 
 
@@ -15,7 +14,7 @@
         overflow: auto;
         flex: 1;
         height: 100%;
-        padding: 1rem 1.5rem;
+        padding: 1rem 1.5rem 2rem 1.5rem;
     }
 
     .layout-menu {
@@ -24,7 +23,7 @@
         list-style-type: none;
 
         .layout-root-menuitem {
-            > .layout-menuitem-root-text {
+            >.layout-menuitem-root-text {
                 font-size: .857rem;
                 text-transform: uppercase;
                 font-weight: 700;
@@ -36,14 +35,14 @@
                 }
             }
 
-            > a {
+            >a {
                 display: none;
             }
         }
 
         li {
             &.active-menuitem {
-                > a {
+                >a {
                     .layout-submenu-toggler {
                         transform: rotate(-180deg);
                     }
@@ -131,4 +130,3 @@
         }
     }
 }
-

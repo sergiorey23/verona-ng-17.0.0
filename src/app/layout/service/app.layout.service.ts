@@ -3,7 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { TabCloseEvent } from '../api/tabcloseevent';
 
-export type MenuMode = 'static' | 'overlay' | 'slim-plus' | 'slim';
+export type MenuMode = 'static' | 'overlay' | 'slim-plus' | 'slim' | 'drawer';
 
 export type ColorScheme = 'light' | 'dark';
 
@@ -24,6 +24,8 @@ interface LayoutState {
     configSidebarVisible: boolean;
     staticMenuMobileActive: boolean;
     menuHoverActive: boolean;
+    sidebarActive: boolean;
+    anchored: boolean;
 }
 
 @Injectable({
@@ -49,6 +51,8 @@ export class LayoutService {
         configSidebarVisible: false,
         staticMenuMobileActive: false,
         menuHoverActive: false,
+        sidebarActive: false,
+        anchored: false,
     };
 
     tabs: MenuItem[] = [];
@@ -99,8 +103,8 @@ export class LayoutService {
                 el == this._config.theme
                     ? (el = config.theme)
                     : el == `theme-${this._config.colorScheme}`
-                    ? (el = `theme-${config.colorScheme}`)
-                    : el
+                        ? (el = `theme-${config.colorScheme}`)
+                        : el
             )
             .join('/');
 

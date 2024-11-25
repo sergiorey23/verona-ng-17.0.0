@@ -51,7 +51,7 @@ import { MenuModule } from 'primeng/menu';
         RippleModule,
         RouterModule,
         TooltipModule,
-        AppConfigModule
+        AppConfigModule,
     ],
     exports: [AppLayoutComponent]
 })

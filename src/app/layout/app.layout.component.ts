@@ -32,7 +32,7 @@ export class AppLayoutComponent implements OnDestroy {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
                     const isOutsideClicked = !(this.appSidebar.el.nativeElement.isSameNode(event.target) || this.appSidebar.el.nativeElement.contains(event.target)
-                    || this.appTopbar.menuButton.nativeElement.isSameNode(event.target) || this.appTopbar.menuButton.nativeElement.contains(event.target));
+                        || this.appTopbar.menuButton.nativeElement.isSameNode(event.target) || this.appTopbar.menuButton.nativeElement.contains(event.target));
                     if (isOutsideClicked) {
                         this.hideMenu();
                     }
@@ -63,10 +63,10 @@ export class AppLayoutComponent implements OnDestroy {
         });
 
         this.tabCloseSubscription = this.layoutService.tabClose$.subscribe((event: TabCloseEvent) => {
-            if (this.router.isActive(event.tab.routerLink[0], { paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'})) {
+            if (this.router.isActive(event.tab.routerLink[0], { paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored' })) {
                 const tabs = this.layoutService.tabs;
 
-                if (tabs.length > 1) { 
+                if (tabs.length > 1) {
                     if (event.index === (tabs.length - 1))
                         this.router.navigate(tabs[tabs.length - 2].routerLink);
                     else
@@ -105,11 +105,11 @@ export class AppLayoutComponent implements OnDestroy {
         this.layoutService.state.staticMenuMobileActive = false;
         this.layoutService.state.menuHoverActive = false;
         this.menuService.reset();
-        if(this.menuOutsideClickListener) {
+        if (this.menuOutsideClickListener) {
             this.menuOutsideClickListener();
             this.menuOutsideClickListener = null;
         }
-        
+
         if (this.menuScrollListener) {
             this.menuScrollListener();
             this.menuScrollListener = null;
@@ -124,6 +124,7 @@ export class AppLayoutComponent implements OnDestroy {
             'layout-slim-plus': this.layoutService.config().menuMode === 'slim-plus',
             'layout-static': this.layoutService.config().menuMode === 'static',
             'layout-overlay': this.layoutService.config().menuMode === 'overlay',
+            'layout-drawer': this.layoutService.config().menuMode === 'drawer',
             'layout-overlay-active': this.layoutService.state.overlayMenuActive,
             'layout-mobile-active': this.layoutService.state.staticMenuMobileActive,
             'layout-static-inactive': this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config().menuMode === 'static',
@@ -131,7 +132,21 @@ export class AppLayoutComponent implements OnDestroy {
             'p-ripple-disabled': !this.layoutService.config().ripple,
             'layout-light': this.layoutService.config().layoutTheme === 'colorScheme' && this.layoutService.config().colorScheme === 'light',
             'layout-dark': this.layoutService.config().layoutTheme === 'colorScheme' && this.layoutService.config().colorScheme === 'dark',
-            'layout-primary': this.layoutService.config().colorScheme !== 'dark' && this.layoutService.config().layoutTheme === 'primaryColor'
+            'layout-primary': this.layoutService.config().colorScheme !== 'dark' && this.layoutService.config().layoutTheme === 'primaryColor',
+            'layout-sidebar-active': this.layoutService.state.sidebarActive,
+            'layout-sidebar-anchored': this.layoutService.state.anchored,
+        }
+    }
+
+    onMouseEnter() {
+        if (!this.layoutService.state.anchored) {
+            this.layoutService.state.sidebarActive = true;
+        }
+    }
+
+    onMouseLeave() {
+        if (!this.layoutService.state.anchored) {
+            this.layoutService.state.sidebarActive = false;
         }
     }
 

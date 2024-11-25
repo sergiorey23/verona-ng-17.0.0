@@ -16,7 +16,7 @@ export class AppTopBarComponent {
 
     searchActive: boolean = false;
 
-    constructor(public layoutService: LayoutService) {}
+    constructor(public layoutService: LayoutService) { }
 
     onMenuButtonClick() {
         this.layoutService.onMenuToggle();
@@ -48,11 +48,15 @@ export class AppTopBarComponent {
 
     get logo(): string {
         const path = 'assets/layout/images/logo-';
-        const logo = (this.layoutTheme === 'primaryColor'  && !(this.layoutService.config().theme  == "yellow")) ? 'light.png' : (this.colorScheme === 'light' ? 'dark.png' : 'light.png');
+        const logo = (this.layoutTheme === 'primaryColor' && !(this.layoutService.config().theme == "yellow")) ? 'light.png' : (this.colorScheme === 'light' ? 'dark.png' : 'light.png');
         return path + logo;
     }
 
     get tabs(): MenuItem[] {
         return this.layoutService.tabs;
+    }
+
+    anchor() {
+        this.layoutService.state.anchored = !this.layoutService.state.anchored;
     }
 }

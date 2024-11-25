@@ -1,6 +1,8 @@
 <div class="layout-container" [ngClass]="containerClass">
-    <app-topbar></app-topbar>
-    <app-sidebar></app-sidebar>
+    <div (mouseleave)="onMouseLeave()">
+        <app-topbar></app-topbar>
+        <app-sidebar (mouseenter)="onMouseEnter()"></app-sidebar>
+    </div>
     <div class="layout-content-wrapper">
         <div class="layout-content">
             <div class="layout-content-inner">
@@ -12,4 +14,3 @@
     </div>
     <app-config></app-config>
 </div>
-

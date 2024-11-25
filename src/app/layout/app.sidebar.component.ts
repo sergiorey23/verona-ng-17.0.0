@@ -6,8 +6,7 @@ import { LayoutService } from './service/app.layout.service';
     templateUrl: './app.sidebar.component.html'
 })
 export class AppSidebarComponent {
-
     @ViewChild('menuContainer') menuContainer!: ElementRef;
-    constructor(public layoutService: LayoutService, public el: ElementRef) {}
+    constructor(public layoutService: LayoutService, public el: ElementRef) { }
 
 }

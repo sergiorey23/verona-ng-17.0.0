@@ -10,20 +10,26 @@
     align-items: center;
     background-color: var(--v-body-bg);
 
-    .app-logo {
+
+    .layout-header {
         display: flex;
         align-items: center;
-        flex-shrink: 0;
 
-        img {
-            width: 3rem;
-        }
+        .app-logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
 
-        span {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-left: .5rem;
-            color: var(--v-menuitem-text-color);
+            img {
+                width: 3rem;
+            }
+
+            span {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-left: .5rem;
+                color: var(--v-menuitem-text-color);
+            }
         }
     }
 
@@ -91,7 +97,7 @@
         flex: 1 1 auto;
         overflow: auto;
 
-        > li {
+        >li {
             display: flex;
             align-items: center;
             transition: background-color var(--transition-duration);
@@ -106,6 +112,7 @@
                 padding-right: 1.375rem;
                 color: var(--v-menuitem-text-color-secondary);
                 opacity: .7;
+
                 &.active-route {
                     opacity: 1;
                     color: var(--v-menuitem-text-color);
@@ -134,7 +141,7 @@
             &.topbar-menu-empty {
                 color: var(--v-menuitem-text-color);
                 cursor: auto;
-                
+
                 &:hover {
                     background-color: transparent;
                 }
@@ -197,7 +204,7 @@
                 transition: opacity .1s;
                 transition-delay: .1s;
             }
-            
+
             .search-input-wrapper {
                 width: 190px;
                 opacity: 1;
@@ -222,7 +229,7 @@
             padding: .5rem;
             cursor: pointer;
 
-            > img {
+            >img {
                 width: 36px;
                 margin-right: .55rem;
             }

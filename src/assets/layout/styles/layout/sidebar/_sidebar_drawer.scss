@@ -1,43 +1,44 @@
 @media screen and (min-width: $breakpoint) {
     .layout-container {
         &.layout-drawer {
+            .layout-header {
+                width: 4rem;
+                transition: width 0.3s cubic-bezier(0, 0, 0.2, 1);
 
-            .app-logo {
-                span {
+                .app-logo {
+                    span {
+                        opacity: 0;
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        transition: opacity 0.3s ease, background-color var(--transition-duration),
+                            transform 0.3s;
+                    }
+                }
+
+                .layout-sidebar-anchor {
+                    display: inline;
                     position: absolute;
                     visibility: hidden;
                     opacity: 0;
-                    transform: translateX(-30px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    border-radius: 50%;
+                    border: 2px solid var(--primary-color);
+                    background-color: transparent;
+                    transform: translateX(-130px);
+                    transition: opacity 0.3s ease, background-color var(--transition-duration),
+                        transform 0.3s;
                 }
             }
-
-            .layout-sidebar-anchor {
-                display: none;
-                width: 1.25rem;
-                height: 1.25rem;
-                border-radius: 50%;
-                border: 2px solid var(--primary-color);
-                background-color: transparent;
-                transition: background-color var(--transition-duration),
-                    transform 0.3s;
-            }
-
-
-
 
             .topbar-menubutton {
                 display: none;
             }
 
-            .layout-content-wrapper {
-                margin-left: 5rem;
-            }
-
             .layout-sidebar {
-                transition: width 0.3s cubic-bezier(0, 0, 0.2, 1);
                 width: 5rem;
                 z-index: 999;
+                transition: width .3s cubic-bezier(0, 0, 0.2, 1);
 
                 .layout-menu-container {
                     overflow: hidden;
@@ -45,17 +46,15 @@
                 }
 
                 .layout-menu {
-                    transition: all .4s;
 
                     .layout-root-menuitem {
                         >.layout-menuitem-root-text {
                             opacity: 0;
                             white-space: nowrap;
-                            transition: all .1s;
+                            transition: all .3s;
 
                             >span {
                                 margin-right: auto;
-
                             }
 
                             .layout-menuitem-icon {
@@ -78,13 +77,12 @@
 
 
                         a {
-                            padding: .75rem 2rem;
-                            width: 1.25rem;
+                            padding: .75rem 1.9rem;
 
                             span {
                                 opacity: 0;
                                 white-space: nowrap;
-                                transition: all .1s;
+                                transition: all .3s;
                             }
 
                             .layout-menuitem-icon {
@@ -98,25 +96,28 @@
             }
 
             .layout-content-wrapper {
-                margin-left: 5.25rem;
+                margin-left: 5rem;
                 transition: margin-left 0.3s cubic-bezier(0, 0, 0.2, 1);
                 overflow-x: hidden;
             }
 
             &.layout-sidebar-active {
+
                 .layout-header {
+                    width: 14rem;
 
                     .app-logo {
                         span {
-                            position: static;
-                            visibility: visible;
                             opacity: 1;
-                            transform: translateX(0);
+                            transform: scaleX(1);
                         }
                     }
 
                     .layout-sidebar-anchor {
-                        display: block;
+                        position: static;
+                        visibility: visible;
+                        opacity: 1;
+                        transform: translateX(0);
                         animation: px-fadein 0.15s linear;
                     }
                 }
@@ -138,7 +139,6 @@
                                 padding: 1rem 0 .5rem 1.5rem;
                                 opacity: 1;
                                 white-space: nowrap;
-                                transition: all .3s;
 
                                 >.layout-menuitem-root-icon {
                                     display: none;
@@ -148,17 +148,14 @@
 
                         ul {
                             a {
-                                width: auto;
-
                                 .layout-submenu-toggler {
                                     display: block;
                                 }
 
                                 span {
                                     opacity: 1;
-                                    white-space: nowrap;
-                                    transition: all .3s;
                                 }
+
                             }
 
                             ul {

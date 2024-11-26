@@ -27,9 +27,13 @@
             span {
                 font-size: 2rem;
                 font-weight: 700;
-                margin-left: .5rem;
+                margin-left: 1rem;
                 color: var(--v-menuitem-text-color);
             }
+        }
+
+        .layout-sidebar-anchor {
+            display: none;
         }
     }
 
@@ -206,7 +210,7 @@
             }
 
             .search-input-wrapper {
-                width: 190px;
+                width: 250px;
                 opacity: 1;
                 visibility: visible;
 

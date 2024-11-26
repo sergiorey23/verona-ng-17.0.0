@@ -2,7 +2,7 @@
     .layout-container {
         &.layout-static {
             .layout-sidebar {
-                transition: transform var(--transition-duration);
+                width: 15rem;
             }
 
             .layout-content-wrapper {
@@ -12,7 +12,7 @@
 
         &.layout-static-inactive {
             .layout-sidebar {
-                transform: translateX(-100%);
+                width: 0;
             }
 
             .layout-content-wrapper {
@@ -27,13 +27,11 @@
 
             .layout-sidebar {
                 z-index: 999;
-                transform: translateX(-100%);
-                transition: transform var(--transition-duration);
             }
 
             &.layout-overlay-active {
                 .layout-sidebar {
-                    transform: translateX(0);
+                    width: 15rem;
                 }
             }
         }

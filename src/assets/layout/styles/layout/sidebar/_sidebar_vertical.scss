@@ -1,14 +1,15 @@
 .layout-sidebar {
     position: fixed;
-    width: 15rem;
     display: flex;
     flex-direction: column;
     height: calc(100% - 5rem);
     left: 0;
     top: 5rem;
-    user-select: none;
     z-index: 999;
+    width: 0;
+    overflow: hidden;
     background: var(--v-body-bg);
+    transition: width var(--transition-duration) cubic-bezier(0, 0, 0.2, 1);
 
 
     .layout-menu-container {
